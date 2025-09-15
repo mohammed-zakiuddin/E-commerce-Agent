@@ -1,5 +1,8 @@
 import streamlit as st
 from duckduckgo_search import DDGS
+import pandas as pd
+
+st.set_page_config(page_title="ShopSmart AI", page_icon="🛒", layout="wide")
 
 st.title("🛒 ShopSmart AI - E-commerce Agent")
 st.write("Finds, compares & recommends the best buy instantly!")
@@ -11,25 +14,26 @@ if query:
     
     products = []
     with DDGS() as ddgs:
-        # force results to English + set region to India (or US if you prefer)
+        # Force English results (India region, change to 'us-en' for US)
         for r in ddgs.text(
             query + " buy online price",
-            region="in-en",   # India English (use "us-en" for US English)
+            region="in-en",
             safesearch="Moderate",
             max_results=5
         ):
             title = r.get("title")
+            desc = r.get("body")
             link = r.get("href")
-            snippet = r.get("body")
-            products.append((title, snippet, link))
+            products.append({"Product": title, "Description": desc, "Link": link})
     
     if products:
-        st.subheader("📊 Product Comparison")
-        st.table(products)
+        st.subheader("📊 Product Comparison Table")
+        df = pd.DataFrame(products)
+        st.dataframe(df, use_container_width=True)
 
-        # Best pick = first search result
+        # Best pick = first result
         best_product = products[0]
-        st.success(f"✅ Best Buy Suggestion: {best_product[0]}")
-        st.markdown(f"[Check it out here]({best_product[2]})")
+        st.success(f"✅ Best Buy Suggestion: {best_product['Product']}")
+        st.markdown(f"[Check it out here]({best_product['Link']})")
     else:
         st.error("No products found. Try another search.")
