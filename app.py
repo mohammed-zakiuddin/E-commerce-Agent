@@ -16,8 +16,8 @@ if query:
     with DDGS() as ddgs:
         # Force English results (India region, change to 'us-en' for US)
         for r in ddgs.text(
-            query + " buy online price",
-            region="in-en",
+    query + " buy online price",
+    region="us-en",   # US-English
             safesearch="Moderate",
             max_results=5
         ):
