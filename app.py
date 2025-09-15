@@ -11,7 +11,13 @@ if query:
     
     products = []
     with DDGS() as ddgs:
-        for r in ddgs.text(query + " buy online price", max_results=5):
+        # force results to English + set region to India (or US if you prefer)
+        for r in ddgs.text(
+            query + " buy online price",
+            region="in-en",   # India English (use "us-en" for US English)
+            safesearch="Moderate",
+            max_results=5
+        ):
             title = r.get("title")
             link = r.get("href")
             snippet = r.get("body")
@@ -21,7 +27,7 @@ if query:
         st.subheader("📊 Product Comparison")
         st.table(products)
 
-        # Simple "best pick" = first search result
+        # Best pick = first search result
         best_product = products[0]
         st.success(f"✅ Best Buy Suggestion: {best_product[0]}")
         st.markdown(f"[Check it out here]({best_product[2]})")
