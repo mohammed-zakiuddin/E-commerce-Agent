@@ -1,15 +1,19 @@
 import streamlit as st
 from duckduckgo_search import DDGS
 import pandas as pd
+import re
 
 st.set_page_config(page_title="ShopSmart AI", page_icon="🛒", layout="wide")
 
 st.title("🛒 ShopSmart AI - E-commerce Agent")
 st.write("Finds, compares & recommends the best buy instantly!")
 
-# Helper function to check if text is English (ASCII filter)
-def is_english(text):
-    return all(ord(c) < 128 for c in text)
+# Smarter English check (allow ₹, $, numbers, %, etc.)
+def is_mostly_english(text):
+    if not text:
+        return False
+    english_chars = re.findall(r"[A-Za-z\s]", text)
+    return len(english_chars) / len(text) > 0.6   # 60% English threshold
 
 query = st.text_input("Enter the product you want to search:")
 
@@ -18,11 +22,10 @@ if query:
     
     products = []
     with DDGS() as ddgs:
-        # Force US-English region + add "English" in query
         search_query = query + " buy online price English"
         for r in ddgs.text(
             search_query,
-            region="us-en",
+            region="us-en",   # try "in-en" if you want India English results
             safesearch="Moderate",
             max_results=10
         ):
@@ -30,8 +33,7 @@ if query:
             desc = r.get("body", "")
             link = r.get("href", "")
 
-            # Keep only English results
-            if is_english(title) and is_english(desc):
+            if is_mostly_english(title) or is_mostly_english(desc):
                 products.append({"Product": title, "Description": desc, "Link": link})
     
     if products:
