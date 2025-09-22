@@ -2,10 +2,10 @@
 streamlit
 requests
 
-
-https://e-commerce-agent-cr8uxw8ysgqzejzaes5uoq.streamlit.app/
 🛒 ShopSmart AI - E-commerce Agent
 Welcome to ShopSmart AI, your intelligent E-commerce Agent designed to help you find, compare, and recommend the best products online—instantly and effortlessly!
+
+https://e-commerce-agent-cr8uxw8ysgqzejzaes5uoq.streamlit.app/
 
 🌟 What is ShopSmart AI?
 ShopSmart AI leverages search intelligence and data analysis to simplify your shopping research. Enter a product name, and ShopSmart AI will scour the web, find online options, compare prices, and recommend the best buy—all in a beautiful, interactive interface.
