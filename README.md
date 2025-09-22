@@ -2,42 +2,38 @@
 streamlit
 requests
 
-E-commerce Agent
-Welcome to the E-commerce Agent repository! This project is designed to empower e-commerce businesses with intelligent automation, insightful analytics, and seamless integration capabilities. Whether you’re launching a new online store or enhancing an existing platform, E-commerce Agent provides powerful tools to streamline your operations and elevate your customer experience.
+🛒 ShopSmart AI - E-commerce Agent
+Welcome to ShopSmart AI, your intelligent E-commerce Agent designed to help you find, compare, and recommend the best products online—instantly and effortlessly!
 
-🚀 Overview
-E-commerce Agent is an AI-driven toolkit built to automate tasks, analyze business data, manage inventory, and facilitate customer interactions. Its modular design allows easy customization and integration with popular e-commerce platforms.
+🌟 What is ShopSmart AI?
+ShopSmart AI leverages search intelligence and data analysis to simplify your shopping research. Enter a product name, and ShopSmart AI will scour the web, find online options, compare prices, and recommend the best buy—all in a beautiful, interactive interface.
 
 ✨ Features
-Order Automation: Effortlessly manage orders from checkout to delivery.
-Sales Insights: Visualize sales trends and customer behavior for strategic decisions.
-Inventory Control: Monitor stock, receive alerts, and automate restocking.
-Smart Customer Support: Engage and assist customers using intelligent chatbots.
-Easy Integrations: Connect with Shopify, WooCommerce, and other major platforms.
-Customizable Modules: Add or adjust features as your business evolves.
-🛠 Installation
-Clone the repository
-
-git clone https://github.com/mohammed-zakiuddin/E-commerce-Agent.git
-cd E-commerce-Agent
+Instant Product Search: Type what you want, and ShopSmart AI finds relevant products across the web.
+Smart Filtering: Only English-language results are shown for clarity and relevance.
+Price Extraction: Automatically identifies and compares prices, highlighting the best deals.
+Comparison Table: Easily review product details, descriptions, direct links, and prices in a sortable table.
+Best Buy Recommendation: Get a clear, actionable suggestion for your purchase—no more guesswork!
+🚀 How Does It Work?
+Enter your product query in the search box.
+ShopSmart AI uses DuckDuckGo Search to find products and prices.
+Results are filtered for English and the lowest price is highlighted.
+Instantly see details, compare options, and visit the best buy with one click.
+🛠️ Installation & Usage
+Prerequisites
+Python 3.8+
+Streamlit
+duckduckgo-search
+pandas
 Install dependencies
+pip install streamlit duckduckgo-search pandas
+Run the App
+streamlit run app.py
+The app will open in your browser. Enter any product you want to search and let ShopSmart AI do the rest!
 
-# For Python projects:
-pip install -r requirements.txt
-# For Node.js projects:
-npm install
-Configure environment variables
-
-Copy .env.example to .env and fill in your credentials and API keys.
-📚 Usage
-Start the application
-python main.py
-# or for Node.js
-npm start
-API Documentation: See the /docs directory for reference.
-Integrations: Follow setup guides in docs/integrations to connect your store.
-⚙️ Configuration
-Configuration settings are managed via the .env file and the config/ directory. Adjust database connections, API keys, and feature toggles to fit your requirements.
-
+📂 File Overview
+app.py — Main Streamlit application. All logic for search, filtering, price extraction, and UI.
+README.md — Project documentation (this file).
 🤝 Contributing
-We welcome contributions! Please read CONTRIBUTING.md for guidelines on how to get involved.
+Contributions, suggestions, and feedback are warmly welcome!
+Open an issue or pull request to help make ShopSmart AI smarter and more helpful.
